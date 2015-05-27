@@ -8,7 +8,7 @@
 $myLcNameMapper= new lcNameMapper;
 $lcName = $myLcNameMapper->getLcName($lc);
 -->
-    <a href="#" class="logo"><b>AIESEC in Poland Mkt Tracking Tool {{ $lcName }} </b></a>
+    <a href="#" class="logo"><b>AIESEC in Poland Mkt Tracking Tool </b></a>
     <!--logo end-->
 
     <!--<div class="top-menu">

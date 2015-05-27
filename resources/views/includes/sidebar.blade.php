@@ -8,23 +8,10 @@
       	  <h5 class="centered">AIESEC in Poland</h5>
       	  	
           <li class="sub-menu">
-              <a href="urlgenerator.php" >
+              <a href="{{URL::to('/')}}/generate-url" >
                   <i class="fa fa-bar-chart-o"></i>
                   <span>URL Generator</span>
               </a>
-          </li>
-          <li class="sub-menu">
-              <a href="javascript:;" class="<?= Request::is('national*') ? 'active' : '' ?>" >
-                  <i class="fa fa-bar-chart-o"></i>
-                  <span>MC promo</span>
-              </a>
-              <ul class="sub">
-                  <li class="<?= Request::is('national/gc*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/gc">Global Citizen</a></li>
-                  <li class="<?= Request::is('national/gt*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/gt">Global Talents</a></li>
-                  <li class="<?= Request::is('national/gh*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/gh">Global Host</a></li>
-                  <li class="<?= Request::is('national/fl*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/fl">Future Leaders</a></li>
-                  <li class="<?= Request::is('national/au*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/au">Aiesec University</a></li>
-              </ul>
           </li>
           <li class="sub-menu">
               <a href="javascript:;" class="<?= Request::is('total*') ? 'active' : '' ?>" >
@@ -39,7 +26,20 @@
                   <li class="<?= Request::is('total/au*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/total/au">Aiesec University</a></li>
               </ul>
           </li>
-
+          <li class="sub-menu">
+              <a href="javascript:;" class="<?= Request::is('national*') ? 'active' : '' ?>" >
+                  <i class="fa fa-bar-chart-o"></i>
+                  <span>MC promo</span>
+              </a>
+              <ul class="sub">
+                  <li class="<?= Request::is('national/gc*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/gc">Global Citizen</a></li>
+                  <li class="<?= Request::is('national/gt*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/gt">Global Talents</a></li>
+                  <li class="<?= Request::is('national/gh*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/gh">Global Host</a></li>
+                  <li class="<?= Request::is('national/fl*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/fl">Future Leaders</a></li>
+                  <li class="<?= Request::is('national/au*') ? 'active' : '' ?>"><a  href="{{URL::to('/')}}/national/au">Aiesec University</a></li>
+              </ul>
+          </li>
+          
           <li class="sub-menu">
               <a href="javascript:;" class="<?= Request::is('bialystok*') ? 'active' : '' ?>">
                   <i class="fa fa-bar-chart-o"></i>

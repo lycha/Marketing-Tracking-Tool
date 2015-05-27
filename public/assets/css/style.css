@@ -25,6 +25,9 @@ Premium: http://www.gridgum.com
     display: table-cell;
     vertical-align: middle;
 }
+.display-none{
+    display: none;
+}
 
 /* BASIC THEME CONFIGURATION */
 body {

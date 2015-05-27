@@ -21,6 +21,9 @@ Route::get('/{lc}/{program}', 'DashboardController@index')
 	->where(['lc' => '^(total)|(national)|(bialystok)|(gdansk)|(katowice)|(kielce)|(krakow)|(lublin)|(lodz)|(olsztyn)|(poznan)|(rzeszow)|(szczecin)|(torun)|(warszawasgh)|(warszawauw)|(wroclawue)|(wroclawut)',
 			 'program' => '^(gt)|(gc)|(gh)|(fl)|(au)']);
 
+Route::get('/generate-url', 'URLGeneratorController@index');
+Route::get('/generate-url/generate', 'URLGeneratorController@generate');
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([

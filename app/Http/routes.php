@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', 'URLGeneratorController@index');
 //Route::get('/national', 'DashboardController@index');
 Route::get('/{lc}/{program}/update-analysis', 'DashboardController@updateAnalysis')
 	->where(['lc' => '^(total)|(national)|(bialystok)|(gdansk)|(katowice)|(kielce)|(krakow)|(lublin)|(lodz)|(olsztyn)|(poznan)|(rzeszow)|(szczecin)|(torun)|(warszawasgh)|(warszawauw)|(wroclawue)|(wroclawut)',

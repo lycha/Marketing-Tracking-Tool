@@ -11,9 +11,9 @@ $lcName = $myLcNameMapper->getLcName($lc);
     <a href="#" class="logo"><b>AIESEC in Poland Mkt Tracking Tool </b></a>
     <!--logo end-->
 
-    <!--<div class="top-menu">
+    <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="login.html">Logout</a></li>
+            <li><a class="logout" href="{{ url('/auth/logout') }}">Logout</a></li>
         </ul>
-    </div>-->
+    </div>
 </header>

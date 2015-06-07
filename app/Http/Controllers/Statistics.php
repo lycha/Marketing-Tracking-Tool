@@ -10,7 +10,7 @@ class Statistics {
 	private $date_from;
 	private $date_to;
 
-	public function __construct($lc, $campaign, $program, $date_from, $date_to)
+	public function __construct($lc, $campaign='', $program, $date_from='', $date_to='')
 	{
 		$this->lc = $lc;
 		$this->campaign = $campaign;
@@ -198,5 +198,40 @@ class Statistics {
 
 	public function getChartConversion(){
 		return $this->chartConversion;
+	}
+
+	public function getAllData()
+	{
+		$result = '';
+		$where = "";
+
+		$where = " WHERE 
+			timestamp BETWEEN '".$this->date_from."'::timestamp AND'".$this->date_to."'::timestamp AND 
+			 program = '".$this->program."'";
+
+		if ($this->lc != 'total') {
+			$where = $where." and lc = '".$this->lc."' ";
+		}
+		if ($this->campaign != 'all') {
+			$where = $where." and utm_campaign = '".$this->campaign."'";
+		}
+
+		$result = DB::select('Select timestamp, 
+			utm_source, 
+			utm_medium, 
+			utm_campaign, 
+			program, 
+			bucket, 
+			lc, 
+			lc_form, 
+			name, 
+			surname, 
+			email, 
+			phone_number, 
+			registered from marketing_leads '.$where);
+		
+		$result = json_decode(json_encode((array) $result), true);
+		//var_dump($result);
+		return $result;
 	}
 }

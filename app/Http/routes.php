@@ -24,6 +24,8 @@ Route::get('/{lc}/{program}', 'DashboardController@index')
 Route::get('/generate-url', 'URLGeneratorController@index');
 Route::get('/generate-url/generate', 'URLGeneratorController@generate');
 
+Route::get('/{lc}/{program}/generatexls', 'DashboardController@GenerateXls');
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([

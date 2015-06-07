@@ -2,7 +2,6 @@
 
 
 @section('content')
-
 <div class="row mt">
 
   <div class="col-md-12 col-sm-12 mb">
@@ -17,6 +16,11 @@
         {!! Form::token() !!}
         {!! Form::submit('Select', ['name'=>'submit','class'=>'btn btn-theme']) !!}
       {!! Form::close() !!}
+
+    <h4>Generate XLS file</h4>
+    
+      <button class="btn btn-success" id="generate-xls-button" type="button">Generate Data</button>
+    
 
   </div>
 </div>
@@ -110,7 +114,6 @@
               </div>
           </div>
       </div>
-</div>
 
 @endsection
 
@@ -263,6 +266,26 @@
     });
   });
 
+jQuery( document ).ready( function( $ ) {
+    $( '#generate-xls-button' ).click(function(e) {
+        e.preventDefault();
+        var host = "{{URL::to('/').'/'.$lc.'/'.$program}}/generatexls";
+
+        //var name = $(this).find('input[name=name]').val();
+        var campaign = $('#campaign').val();
+        var datepicker_from = $('#datepicker_from').val();
+        var datepicker_to = $('#datepicker_to').val();
+
+        //window.location.href=host+'?'+campaign+'&'+datepicker_from+'&'+datepicker_to;
+        window.open(
+          host+'?'+campaign+'&'+datepicker_from+'&'+datepicker_to,
+          '_blank' // <- This is what makes it open in a new window.
+        );
+    });
+  });
+
+
+
 ///////////////////////////////////////////////////////////
 /*
 *  Ajax setup to show and hide loading spinner 
@@ -277,6 +300,11 @@
     }
   });
 
+///////////////////////////////////////////////////////////
+/*
+*  Charts generators
+*/
+///////////////////////////////////////////////////////////
 function chart(conversionChartData, chartDataLead, chartDataOpen){
   var keys = ["generic", "facebook", "twitter", "offline", "press", "website"];
   var leadChart = Morris.Line({

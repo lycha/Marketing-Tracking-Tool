@@ -42,7 +42,7 @@
 		        <h2 class="form-login-heading">sign in now</h2>
 		        <div class="login-wrap">
 		        	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		            <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address" autofocus>
+		            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="User name" autofocus>
 		            <br>
 		            <input type="password" class="form-control" name="password">
 		            <br>

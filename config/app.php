@@ -137,6 +137,9 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
+		'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -195,7 +198,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'Html'      => 'Illuminate\Html\HtmlFacade',
-		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
 
 	],
 

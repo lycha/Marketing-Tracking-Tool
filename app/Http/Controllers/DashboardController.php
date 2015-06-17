@@ -20,6 +20,13 @@ class DashboardController extends Controller {
 		$this->middleware('auth');
 	}
 
+	public function log()
+    {
+    	DB::enableQueryLog();
+      $queries = DB::getQueryLog();
+      return $queries;
+    }
+
 	public function updateAnalysis($lc, $program)
 	{
 		$campaign = Input::get('campaign');
@@ -109,7 +116,7 @@ class DashboardController extends Controller {
 		        $sheet->fromArray($data);
 		    });
 
-		})->download('csv');
+		})->download('xls');
 
 		/*foreach (array_keys((array)$data[0]) as $key) {
 	        $objPHPExcel->getActiveSheet()->setCellValue($column.$rowCount,$key);

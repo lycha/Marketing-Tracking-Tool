@@ -32,3 +32,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('/query-log', 'DashboardController@log');
+
+Route::get('/api/v1/save-lead', 'ApiController@saveLead');
+Route::get('/api/v1/register-lead', 'ApiController@registerLead');
+Route::get('/api/v1/register-new', 'ApiController@registerNew');

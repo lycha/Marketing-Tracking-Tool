@@ -14,11 +14,7 @@ class CreateExpaLeadsTable extends Migration {
 	{
 		Schema::create('expa_leads', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->dropPrimary( 'id' );
-			$table->integer('expa_id')->unsigned();
-			$table->primary('expa_id');		
-			$table->string('label')->default('');			
+			$table->increments('id');	
 			$table->string('keywords')->default('');			
 			$table->integer('lc_id')->unsigned();	
 			$table->foreign('lc_id')->references('expa_id')->on('lcs');

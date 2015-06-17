@@ -27,6 +27,11 @@ Route::get('/generate-url/generate', 'URLGeneratorController@generate');
 Route::get('/{lc}/{program}/generatexls', 'DashboardController@GenerateXls');
 
 Route::get('home', 'HomeController@index');
+Route::get('roles', 'ManageRolesController@index');
+Route::get('expa-leads', 'ManageExpaLeadsController@index');
+Route::get('expa-leads/update', 'ManageExpaLeadsController@updateLead');
+Route::get('expa-leads/add', 'ManageExpaLeadsController@addLead');
+Route::get('expa-leads/delete', 'ManageExpaLeadsController@deleteLead');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

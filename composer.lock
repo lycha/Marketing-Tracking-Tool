@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52f54e8c19aa62b8af89324403f5d7a3",
+    "hash": "f21655f46416dbe540fafe1d9c091aea",
     "packages": [
         {
             "name": "chrisbjr/api-guard",
@@ -562,6 +562,56 @@
                 "tokenizer"
             ],
             "time": "2015-03-11 20:06:43"
+        },
+        {
+            "name": "kodeine/laravel-acl",
+            "version": "1.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kodeine/laravel-acl.git",
+                "reference": "c5b97c5759932a15820c57b576683963f4df9a87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kodeine/laravel-acl/zipball/c5b97c5759932a15820c57b576683963f4df9a87",
+                "reference": "c5b97c5759932a15820c57b576683963f4df9a87",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "4.2.x|~5.0",
+                "illuminate/support": "4.2.x|~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Kodeine\\Acl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahsen M.",
+                    "homepage": "https://github.com/kodeine",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Light-weight role-based permissions for Laravel 5 built in Auth system.",
+            "keywords": [
+                "acl",
+                "auth",
+                "eloquent",
+                "kodeine",
+                "laravel",
+                "permissions",
+                "roles",
+                "security"
+            ],
+            "time": "2015-06-14 05:48:52"
         },
         {
             "name": "laravel/framework",
@@ -3751,6 +3801,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "kodeine/laravel-acl": 20,
         "xethron/migrations-generator": 20,
         "way/generators": 20
     },

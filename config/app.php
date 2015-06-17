@@ -140,6 +140,7 @@ return [
 		'Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
+		'Kodeine\Acl\AclServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */

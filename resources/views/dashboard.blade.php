@@ -17,7 +17,7 @@
         {!! Form::submit('Select', ['name'=>'submit','class'=>'btn btn-theme']) !!}
       {!! Form::close() !!}
 
-    <h4>Generate XLS file</h4>
+    <h4>Generate CSV file</h4>
     
       <button class="btn btn-success" id="generate-xls-button" type="button">Generate Data</button>
     
@@ -275,11 +275,11 @@ jQuery( document ).ready( function( $ ) {
         var campaign = $('#campaign').val();
         var datepicker_from = $('#datepicker_from').val();
         var datepicker_to = $('#datepicker_to').val();
-
+       //alert(datepicker_from);
         //window.location.href=host+'?'+campaign+'&'+datepicker_from+'&'+datepicker_to;
+        var url = host+'?campaign='+campaign+'&datepicker_from='+datepicker_from+'&datepicker_to='+datepicker_to; // <- This is what makes it open in a new window.
         window.open(
-          host+'?'+campaign+'&'+datepicker_from+'&'+datepicker_to,
-          '_blank' // <- This is what makes it open in a new window.
+          url,'_blank'
         );
     });
   });

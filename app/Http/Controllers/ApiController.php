@@ -23,7 +23,7 @@ class ApiController extends ApiGuardController
         $registered = 0;
 
         try {
-        	$id = DB::table('marketing_leads_test')->insertGetId(
+        	$id = DB::table('marketing_leads')->insertGetId(
 			    array('uniqid' => $uniqid, 
 			    	  'utm_source' => $utm_source,
 			    	  'utm_medium' => $utm_medium,
@@ -60,11 +60,11 @@ class ApiController extends ApiGuardController
         $registered = 1;
 
         if($uniqid==""){
-          return $this->response->errorNotFound("Error: Record not updated - DataValidationException")   
+          return $this->response->errorNotFound("Error: Record not updated - DataValidationException");   
         }
 
         try {
-            DB::table('marketing_leads_test')
+            DB::table('marketing_leads')
                 ->where('uniqid', $uniqid)
                 ->update(
                     array('uniqid' => "", 
@@ -105,7 +105,7 @@ class ApiController extends ApiGuardController
         $registered = 1;
 
         try {
-            $id = DB::table('marketing_leads_test')->insertGetId(
+            $id = DB::table('marketing_leads')->insertGetId(
                     array('uniqid' => "", 
                           'name' => $first_name,
                           'surname' => $last_name,
@@ -130,6 +130,115 @@ class ApiController extends ApiGuardController
         
         //uniqid, utm_source, utm_medium, utm_campaign, program, bucket, lc, lc_form, name, surname, email, phone_number, registered
         
+    }
+
+    public function addExpaLead()
+    {
+        $keywords = urldecode(Input::get("keywords"));
+        $lc_id = urldecode(Input::get("lc_id"));
+        var_dump($keywords);
+        var_dump($lc_id);
+        try {
+            $id = DB::table('expa_leads')->insertGetId(
+                    array('keywords' => $keywords, 
+                          'lc_id' => $lc_id
+                    )
+            );
+            $message = 'New record created';
+            return $this->response->withItem($message, new LeadTransformer($message));
+        } catch (\Illuminate\Database\QueryException $e) {
+            //var_dump($e);
+            return $this->response->errorNotFound("Error: Record not created - QueryException");
+        }
+    }
+
+    public function getExpaLeads()
+    {
+      
+      $dataArray = array();
+      try {
+        $resArray = DB::select("
+        SELECT expa_leads.keywords, lcs.expa_name, lcs.expa_id AS lc 
+          FROM expa_leads INNER JOIN lcs 
+          ON lcs.expa_id = expa_leads.lc_id 
+          ORDER BY lcs.name, expa_leads.keywords");
+
+        foreach ($resArray as $res) {
+          
+          array_push($dataArray, array(
+              'keywords'=>$res->keywords,
+              'lc_id'=>$res->lc,
+              'expa_name'=>$res->expa_name
+              ));
+        }  
+
+        return $dataArray;
+      } catch (\Illuminate\Database\QueryException $e) {
+            //var_dump($e);
+          return $this->response->errorNotFound("Error: Data not received - QueryException");
+      }
+      return $dataArray;
+    }
+
+    public function getLCs()
+    {
+      
+      $dataArray = array();
+      try {
+        $resArray = DB::select("
+        SELECT id, expa_id, expa_name, url_name, full_name FROM lcs ORDER BY expa_name");
+
+        foreach ($resArray as $res) {
+          array_push($dataArray, array(
+              'id'=>$res->id, 
+              'expa_id'=>$res->expa_id,
+              'expa_name'=>$res->expa_name,
+              'url_name'=>$res->url_name,
+              'full_name'=>$res->full_name
+              ));
+        }
+
+        return $dataArray;
+      } catch (\Illuminate\Database\QueryException $e) {
+            //var_dump($e);
+          return $this->response->errorNotFound("Error: Data not received - QueryException");
+      }
+      return $dataArray;
+    }
+
+    public function getRegisteredLeads()
+    {
+      $id = urldecode(Input::get("id"));
+      $lc = urldecode(Input::get("lc"));
+      $program = urldecode(Input::get("program"));
+      $dataArray = array();
+      try {
+        $resArray = DB::select("
+        SELECT id, timestamp::date, bucket, name, surname, email, phone_number 
+        FROM marketing_leads 
+        WHERE registered = 1 
+          AND id > ".$id." 
+          AND lc_form ='".$lc."' 
+          AND program = '".$program."'");
+
+        foreach ($resArray as $res) {
+          array_push($dataArray, array(
+              'id'=>$res->id, 
+              'timestamp'=>$res->timestamp,
+              'bucket'=>$res->bucket,
+              'name'=>$res->name,
+              'surname'=>$res->surname,
+              'email'=>$res->email,
+              'phone_number'=>$res->phone_number
+              ));
+        }
+
+        return $dataArray;
+      } catch (\Illuminate\Database\QueryException $e) {
+            //var_dump($e);
+          return $this->response->errorNotFound("Error: Data not received - QueryException");
+      }
+      return $dataArray;
     }
 }
 

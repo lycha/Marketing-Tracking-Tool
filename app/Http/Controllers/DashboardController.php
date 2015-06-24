@@ -2,6 +2,7 @@
 
 use DB;
 use Input;
+use Helpers;
 use App\Http\Controllers\Statistics;
 use Excel;
 use PHPExcel_CachedObjectStorageFactory;
@@ -98,7 +99,7 @@ class DashboardController extends Controller {
         /*print "<pre>";
         print_r($data);
         print "</pre>";*/
-        $excel = App::make('excel');
+        /*$excel = App::make('excel');
         ini_set('memory_limit', '256M');
         $cacheMethod = PHPExcel_CachedObjectStorageFactory:: cache_to_phpTemp;
 		$cacheSettings = array( 'memoryCacheSize' => '128M');
@@ -116,12 +117,43 @@ class DashboardController extends Controller {
 		        $sheet->fromArray($data);
 		    });
 
-		})->download('xls');
+		})->download('xls');*/
 
 		/*foreach (array_keys((array)$data[0]) as $key) {
 	        $objPHPExcel->getActiveSheet()->setCellValue($column.$rowCount,$key);
 	        $column++;
     	}*/
+    	//var_dump($data);
+    	header('Content-Type: text/csv; charset=utf-8');
+		header('Content-Disposition: attachment; filename=data.csv');
+
+		// create a file pointer connected to the output stream
+		$output = fopen('php://output', 'w');
+
+		// output the column headings			
+		fputcsv($output, array('timestamp', 
+			'utm_source', 
+			'utm_medium',
+			'utm_campaign',
+			'program',
+			'bucket',
+			'lc',
+			'lc_form',
+			'name',
+			'surname',
+			'email',
+			'phone_number',
+			'registered',
+			));
+
+		// fetch the data
+		
+
+		// loop over the rows, outputting them
+		//while ($row = mysql_fetch_assoc($rows)) fputcsv($output, $row);
+		foreach ($data as $row) {
+			fputcsv($output, $row);
+		}
 
     	//var_dump($data);
 	}
@@ -134,7 +166,21 @@ class DashboardController extends Controller {
 	{
 		//var_dump($lc);
 		//var_dump($program);
+		$lcs = Helpers::getLCs();
+		$res = false;
 
+		foreach($lcs as $index => $lc_arr) {
+	        if(array_search($lc, $lc_arr)!=false) {
+	        	$res = TRUE;
+	        	break;
+	        }else {
+	        	$res = FALSE;
+	        }
+	    }
+		if($res==false && $lc!='total' &&$lc!='national'){
+			abort(404);
+			//var_dump('404');
+		}
 
 		$response = $this->updateAnalysis($lc, $program);
 

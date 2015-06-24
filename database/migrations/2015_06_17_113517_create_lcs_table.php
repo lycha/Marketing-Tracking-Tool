@@ -18,7 +18,9 @@ class CreateLcsTable extends Migration {
 			$table->dropPrimary( 'id' );
 			$table->integer('expa_id')->unsigned();
 			$table->primary('expa_id');			
-			$table->string('name')->default('');		
+			$table->string('expa_name')->default('');		
+			$table->string('url_name')->default('');		
+			$table->string('full_name')->default('');		
 		});
 	}
 

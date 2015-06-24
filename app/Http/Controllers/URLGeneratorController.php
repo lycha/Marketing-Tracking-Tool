@@ -2,6 +2,7 @@
 
 use DB;
 use Input;
+use Helpers;
 use App\Http\Controllers\Statistics;
 
 class URLGeneratorController extends Controller {
@@ -40,6 +41,15 @@ class URLGeneratorController extends Controller {
 		$mediums = [''=>''];
 		$campaigns = [''=>'- choose campaign -','gt-summer'=>'GT Summer','gc-summer'=>'GC Summer'];
 		//$lcs = array('Białystok', 'Gdańsk', );
+		$lcs_arr = Helpers::getLCs();
+		$lcs = array(''=>'- choose LC -');
+		foreach ($lcs_arr as $lc) {
+			$lcs[$lc['url_name']]=$lc['full_name'];
+		}
+		/*print_r('<pre>');
+		print_r($lcs);
+		print_r('<pre>');
+
 		$lcs = [''=>'- choose LC -',
 				'bialystok'=>'Białystok',
 				'gdansk' => 'Gdańsk', 
@@ -58,6 +68,8 @@ class URLGeneratorController extends Controller {
 				'wroclawue' => 'Wrocław UE', 
 				'wroclawut' => 'Wrocław UT', 
 			];
+*/
+
 		$response = compact('programs',
 							'buckets',
 							'sources',

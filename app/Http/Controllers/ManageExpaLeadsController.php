@@ -40,8 +40,8 @@ class ManageExpaLeadsController extends Controller {
 	{
 		$dataArray = array();
 		$resArray = DB::select("
-			SELECT expa_leads.id, expa_leads.keywords, lcs.name AS lc 
-			FROM expa_leads INNER JOIN lcs ON lcs.expa_id = expa_leads.lc_id ORDER BY expa_leads.keywords");
+			SELECT expa_leads.id, expa_leads.keywords, lcs.expa_name AS lc 
+			FROM expa_leads INNER JOIN lcs ON lcs.expa_id = expa_leads.lc_id ORDER BY lcs.expa_name, expa_leads.keywords");
 
 		foreach ($resArray as $res) {
 			
@@ -58,11 +58,11 @@ class ManageExpaLeadsController extends Controller {
 	{
 		$dataArray = array();
 		$resArray = DB::select("
-			SELECT expa_id, name FROM lcs ORDER BY name");
+			SELECT expa_id, expa_name FROM lcs ORDER BY expa_name");
 		//var_dump($resArray);
 		foreach ($resArray as $res) {
 			//foreach ($res as $key => $value) {
-			  $dataArray[$res->expa_id] = $res->name;
+			  $dataArray[$res->expa_id] = $res->expa_name;
 			//}
 		}
 		//var_dump($dataArray);

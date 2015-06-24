@@ -200,6 +200,7 @@ return [
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'Html'      => 'Illuminate\Html\HtmlFacade',
 		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
+		'Helpers'	=> 'App\Libraries\Helpers',
 
 	],
 

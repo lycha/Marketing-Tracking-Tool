@@ -51,6 +51,7 @@
 		        	</div>
 		        </div>
 		        <div class="form-group">
+                    
 		        	{!! Form::label('lc', 'LC name',array('class'=>'col-sm-2 col-sm-2 control-label')) !!}
 		        	<div class="col-sm-10">
 		        		{!! Form::select('lc', $lcs, '- choose LC -', array('class'=>'form-control')) !!}

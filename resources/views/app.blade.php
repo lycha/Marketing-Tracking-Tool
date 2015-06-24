@@ -4,10 +4,10 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta name="author" content="Krzysztof Jackowski">
+    <link rel="shortcut icon" href="{{ asset('assets/img/aiesec_launcher.png') }}" />
 
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <title>AIESEC in Poland | Marketing tracking tool</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">

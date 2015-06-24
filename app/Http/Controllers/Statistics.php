@@ -206,7 +206,7 @@ class Statistics {
 		$where = "";
 
 		$where = " WHERE 
-			timestamp BETWEEN '".$this->date_from."'::timestamp AND'".$this->date_to."'::timestamp AND 
+			timestamp BETWEEN '".$this->date_from."'::timestamp AND '".$this->date_to."'::timestamp AND 
 			 program = '".$this->program."'";
 
 		if ($this->lc != 'total') {
@@ -229,6 +229,8 @@ class Statistics {
 			email, 
 			phone_number, 
 			registered from marketing_leads '.$where);
+
+		//var_dump($where);
 		
 		$result = json_decode(json_encode((array) $result), true);
 		//var_dump($result);
